@@ -1,25 +1,65 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import "./App.css";
+import "./styling/bootstrap-edit.scss";
+
+import Button from "react-bootstrap/Button";
+import { Container, Row, Col } from "react-bootstrap";
+import { useState } from "react";
 
 function App() {
+  var [number, setNumber] = useState(0);
+  var buttons = [
+    {
+      lable: "+",
+      funct: () => {
+        setNumber(number + 1);
+      },
+    },
+    {
+      lable: "-",
+      funct: () => {
+        setNumber(number - 1);
+      },
+    },
+    {
+      lable: "^2",
+      funct: () => {
+        setNumber(number * number);
+      },
+    },
+    {
+      lable: "reset",
+      funct: () => {
+        setNumber(0);
+      },
+    },
+  ];
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Container>
+        <Col>
+          <Row style={{justifyContent:"center"}}>{number}</Row>
+          <Row>
+            {buttons.map((btn) => (
+              <Col>
+                <Button
+                  style={{width:"100%"}}
+                  variant="primary"
+                  onClick={() => {
+                    btn.funct();
+                  }}
+                >
+                  {btn.lable}
+                </Button>
+              </Col>
+            ))}
+          </Row>
+        </Col>
+      </Container>
     </div>
   );
 }
 
 export default App;
+
