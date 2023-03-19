@@ -1,10 +1,12 @@
 // import logo from './logo.svg';
 import "./App.css";
-import "./styling/bootstrap-edit.scss";
+import "./styling/theme1.scss";
 
 import Button from "react-bootstrap/Button";
 import { Container, Row, Col } from "react-bootstrap";
 import { useState } from "react";
+
+import { LoginCard } from "./components/WelcomeCard";
 
 function App() {
   var [number, setNumber] = useState(0);
@@ -39,22 +41,7 @@ function App() {
     <div className="App">
       <Container>
         <Col>
-          <Row style={{justifyContent:"center"}}>{number}</Row>
-          <Row>
-            {buttons.map((btn) => (
-              <Col>
-                <Button
-                  style={{width:"100%"}}
-                  variant="primary"
-                  onClick={() => {
-                    btn.funct();
-                  }}
-                >
-                  {btn.lable}
-                </Button>
-              </Col>
-            ))}
-          </Row>
+          <LoginCard />
         </Col>
       </Container>
     </div>
